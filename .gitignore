@@ -1,0 +1,9 @@
+
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+
+# Terraform lock file - keep this tracked
+!.terraform.lock.hcl
