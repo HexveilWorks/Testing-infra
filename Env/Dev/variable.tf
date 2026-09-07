@@ -41,7 +41,7 @@ variable "aks_cluster" {
     kubernetes_version  = string
     dns_prefix          = string
     private_cluster_enabled = bool
-
+    subnet_id=string
 
     default_node_pool = map(object({
       name                  = string
@@ -87,7 +87,7 @@ variable "dnslink" {
   type = map(object({
     name                = string
     dns_zone_key        = string
-    virtual_network_id  = string
+     vnet_key     = string
   }))
 }
 
@@ -98,7 +98,7 @@ variable "kv_pe" {
     name                = string
     location            = string
     resource_group_name = string
-    subnet_name         = string
+    subnet_id= string
     key_vault_name      = string
 
     private_service_connection = map(object({
