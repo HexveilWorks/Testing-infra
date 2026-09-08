@@ -4,7 +4,7 @@ variable "kv_pe" {
     name                = string
     location            = string
     resource_group_name = string
-    subnet_name         = string
+    subnet_id= string
     key_vault_name      = string
 
     private_service_connection = map(object({
@@ -17,6 +17,7 @@ variable "kv_pe" {
     private_dns_zone_group = map(object({
       name                 = string
       private_dns_zone_ids = list(string)
+      
     }))
   }))
 }

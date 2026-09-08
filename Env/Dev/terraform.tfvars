@@ -47,6 +47,7 @@ aks_cluster = {
     resource_group_name = "riri-rg"
     kubernetes_version = "1.35.5"
     dns_prefix         = "aks"
+    subnet_id  ="aks"
     private_cluster_enabled = true
 
     default_node_pool = {
@@ -72,8 +73,8 @@ aks_cluster = {
 
 
 dnszone = {
-  keyvault = {
-    name                = "privatelink.vaultcore.azure.net"
+  aks = {
+    name                =  "privatelink.centralindia.azmk8s.io"
     resource_group_name = "rg-network-dev"
   }
 
@@ -86,18 +87,17 @@ dnszone = {
 
 dnslink = {
   keyvault-link = {
-    name               = "keyvault-dns-link"
-    dns_zone_key       = "keyvault"
-    virtual_network_id = "/subscriptions/<subscription-id>/resourceGroups/rg-network-dev/providers/Microsoft.Network/virtualNetworks/vnet-aks-dev"
+    name               = "privatelink.centralindia.azmk8s.io"
+    dns_zone_key       = "aks"
+    vnet_key           = "vnet1"
   }
 
   cosmos-mongo-link = {
-    name               = "cosmos-mongo-dns-link"
+    name               = "privatelink.mongo.cosmos.azure.com"
     dns_zone_key       = "cosmos-mongo"
-    virtual_network_id = "/subscriptions/<subscription-id>/resourceGroups/rg-network-dev/providers/Microsoft.Network/virtualNetworks/vnet-aks-dev"
+    vnet_key        = "vnet1"
   }
 }
-
 
 
 
@@ -106,7 +106,7 @@ kv_pe = {
     name                = "pe-keyvault-dev"
     location            = "West US"
     resource_group_name = "rg-network-dev"
-    subnet_name         = "private-endpoint"
+    subnet_id           = "aks"
     key_vault_name      = "kv-aks-dev"
 
     private_service_connection = {
