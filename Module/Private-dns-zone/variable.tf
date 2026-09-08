@@ -10,7 +10,7 @@ variable "dnslink" {
   type = map(object({
     name                = string
     dns_zone_key        = string
-    virtual_network_id  = string
+     vnet_key     = string
   }))
 }
 

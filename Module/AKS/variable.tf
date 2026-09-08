@@ -8,7 +8,7 @@ variable "aks_cluster" {
     kubernetes_version  = string
     dns_prefix          = string
     private_cluster_enabled = bool
-
+    subnet_id = string
 
     default_node_pool = map(object({
       name                  = string
@@ -24,4 +24,8 @@ variable "aks_cluster" {
       load_balancer_sku = string
     }))
   }))
+}
+
+variable "subnet_ids"{
+  type = map(string)
 }
